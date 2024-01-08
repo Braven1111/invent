@@ -1,4 +1,4 @@
-script_key = "KEY_HERE" -- script: displayblox.lua
+script_key = "2e3ho7d69b47z0go7c5ojw45lj73gyfm" -- script: displayblox.lua
 --[[
 
     This script is protected with
