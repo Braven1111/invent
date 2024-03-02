@@ -126,17 +126,13 @@ pcall(function()
             end)
 
             local swords = pvData['content']['Inventory']['Sword']
-			local cursedSwords = {}
+            local cursedSwords = {}
 
-			for i, sword in ipairs(swords) do
-   			 if string.find(sword, "Cursed Dual Katana") then
-        table.insert(cursedSwords, sword)
-   			 elseif string.find(sword, "Shark Anchor") then
-        table.insert(cursedSwords, "S.Anchor")
-    end
-end
-
-
+            for i, sword in ipairs(swords) do
+                if string.find(sword, "Cursed Dual Katana","Shark Anchor") then
+                    table.insert(cursedSwords, sword)
+                end
+            end
 
 
 
