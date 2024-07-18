@@ -62,7 +62,7 @@ pcall(function()
                 { 'Electric Claw', 'BuyElectricClaw' },
                 { 'Dragon Talon', 'BuyDragonTalon' },
                 { 'Godhuman', 'BuyGodhuman' },
-		{ 'Sanguine Art', 'BuySanguineArt' }
+				{ 'Sanguine Art', 'BuySanguineArt' }
 
 		
             }
@@ -129,14 +129,12 @@ pcall(function()
             local cursedSwords = {}
 
             for i, sword in ipairs(swords) do
-                if string.find(sword, "Cursed Dual Katana","Shark Anchor") then
-                    table.insert(cursedSwords, sword)
-                end
-            end
+                      if string.find(sword, "Cursed Dual Katana") then
+                              table.insert(cursedSwords, sword)
+                          end
+                      end
 
-
-
-            -- N?u danh s�ch cursedSwords r?ng, th�m m?t ph?n t? r?ng v�o danh s�ch
+            -- N?u danh sách cursedSwords r?ng, thêm m?t ph?n t? r?ng vào danh sách
             if #cursedSwords == 0 then
                 table.insert(cursedSwords, "")
             end
@@ -162,22 +160,22 @@ pcall(function()
             local bloxFruits = pvData['content']['Inventory']['Blox Fruit']
             local filteredBloxFruits = {}
 
-            -- L?c c�c DevilFruit t? ph?n Blox Fruit
+            -- L?c các DevilFruit t? ph?n Blox Fruit
             for _, fruit in pairs(bloxFruits) do
                 if fruit == "Dough-Dough" or
-   fruit == "T-Rex-T-Rex" or
-   fruit == "Leopard-Leopard" or
-   fruit == "Kitsune-Kitsune" or
-   fruit == "Dragon-Dragon" or
-   fruit == "Mammoth-Mammoth" or
-   fruit == "Sound-Sound" or
-   fruit == "Venom-Venom" or
-   fruit == "Spirit-Spirit" or
-   fruit == "Portal-Portal" or
-   fruit == "Buddha-Buddha" or
-   fruit == "Gravity-Gravity" or
-   fruit == "Control-Control" or
-   fruit == "Shadow-Shadow" then
+			   fruit == "T-Rex-T-Rex" or
+			   fruit == "Leopard-Leopard" or
+			   fruit == "Kitsune-Kitsune" or
+			   fruit == "Dragon-Dragon" or
+			   fruit == "Mammoth-Mammoth" or
+			   fruit == "Sound-Sound" or
+			   fruit == "Venom-Venom" or
+			   fruit == "Spirit-Spirit" or
+			   fruit == "Portal-Portal" or
+			   fruit == "Buddha-Buddha" or
+			   fruit == "Gravity-Gravity" or
+			   fruit == "Control-Control" or
+			   fruit == "Shadow-Shadow" then
                     local parts = {}
         for part in fruit:gmatch("[^-]+") do
             table.insert(parts, part)
@@ -214,36 +212,7 @@ end
                 ['Dark Fragment'] = pvData['content']['Inventory']['Material']['Dark Fragment'] or 0
             }
 
-	local v227 = nil
-	local v228 = nil
-	local v229 = nil
-
--- Th?c hi?n cu?c g?i m�y ch? v� l?y gi� tr? tr? v?
-v229, v228, v227 = game.ReplicatedStorage.Remotes.CommF_:InvokeServer("UpgradeRace", "Check")
-Gear = v228 - 1 ,
-GearInfo = function()
-    -- Ti?p t?c x? l� d?a tr�n gi� tr? tr? v?
-    if v229 == 1 then
-        print("Required Train More")
-    elseif v229 == 2 or v229 == 4 or v229 == 7 then
-        print("Can Buy Gear With " .. v227 .. " Fragments")
-    elseif v229 == 3 then
-        print("Required Train More")
-    elseif v229 == 5 then
-        print("You Are Done Your Race.")
-    elseif v229 == 6 then
-        print("Upgrades completed: " .. v228 - 2 .. "/3, Need Trains More")
-    end
-
-    -- Ti?p t?c x? l� d?a tr�n gi� tr? tr? v?
-    if v229 ~= 8 then
-        if v229 == 0 then
-            print("Ready For Trial")
-        else
-            print("You have yet to achieve greatness")
-        end
-    end
-end
+	
             local trimmedData = {
                 key = key,
                 Note = note,
@@ -262,10 +231,13 @@ end
                 DevilFruit = pvData['content']['Data']['DevilFruit'],
                 AwakenedAbilities = pvData['content']['Awakened Abilities'],
                 userName = pvData['robloxUser'],
-		PulledLever = "",
-		Gear = Gear,
-    		GearInfo = GearInfo
+		PulledLever = ""
             }
+		if trimmedData.PlaceName == "Blox Fruits | Third Sea" then
+		    trimmedData.PlaceName = "Sea 3"
+		elseif trimmedData.PlaceName == "Blox Fruits | Second Sea" then
+		    trimmedData.PlaceName = "Sea 2"
+		end
 
 		if game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CheckTempleDoor") then
    		 trimmedData.PulledLever = "O"
@@ -273,20 +245,16 @@ end
     		trimmedData.PulledLever = "X"
 		end
 
-            -- Ki?m tra xem stat c� t�n "Bounty/Honor" c� t?n t?i trong leaderstats kh�ng
             local leaderstats = plr:FindFirstChild("leaderstats")
             if leaderstats then
-                -- Ki?m tra xem stat c� t�n "Bounty/Honor" c� t?n t?i trong leaderstats kh�ng
                 local bountyHonorStat = leaderstats:FindFirstChild("Bounty/Honor")
                 if bountyHonorStat then
-                    -- S? d?ng gi� tr? c?a Bounty
                     local bountyValue = bountyHonorStat.Value
-                    print("Gi� tr? c?a Bounty: " .. bountyValue)
+                   
 
-                    -- Th�m gi� tr? c?a Bounty v�o d?i tu?ng trimmedData
                     trimmedData.Bounty = bountyValue
                 else
-                    warn("Kh�ng t�m th?y stat c� t�n 'Bounty/Honor' trong leaderstats")
+                    warn("leaderstats")
                 end
             end
 
