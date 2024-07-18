@@ -1,4 +1,4 @@
-local url = 'http://103.214.10.195:9999/api'
+local url = 'http://192.168.1.13:3999/api'
 local Request = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
 
 repeat wait() until game:FindFirstChild("CoreGui") and game.Players.LocalPlayer
